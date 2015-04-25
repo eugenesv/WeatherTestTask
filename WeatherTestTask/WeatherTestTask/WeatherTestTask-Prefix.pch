@@ -1,0 +1,35 @@
+//
+//  WeatherTestTask-Prefix.pch
+//  WeatherTestTask
+//
+//  Created by Eugene Sokolenko on 25.04.15.
+//  Copyright (c) 2015 Eugene Sokolenko. All rights reserved.
+//
+
+#ifndef WeatherTestTask_WeatherTestTask_Prefix_pch
+#define WeatherTestTask_WeatherTestTask_Prefix_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+//#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
+#import <AFNetworking.h>
+
+#endif
+
+#ifdef DEBUG
+//    #define DEBUG_PRINT
+#define DEBUG_PRINTLOG
+#endif
+
+#ifdef DEBUG_PRINT
+#define LOG_GENERAL(format, ...) NSLog(@"%s: " format, __FUNCTION__, ##__VA_ARGS__)
+#else
+#define LOG_GENERAL(format, ...) do {} while(0)
+#endif
+
+#ifdef DEBUG_PRINTLOG
+#define LOG_NETWORK(format, ...) NSLog(@"%s: " format, __FUNCTION__, ##__VA_ARGS__)
+#else
+#define LOG_NETWORK(format, ...) do {} while(0)
+#endif
