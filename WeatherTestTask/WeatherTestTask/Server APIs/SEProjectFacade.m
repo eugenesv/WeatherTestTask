@@ -9,15 +9,15 @@
 #import "SEProjectFacade.h"
 #import "SESessionManager.h"
 
+#import "SEGetWeatherRequest.h"
+#import "Weather.h"
+
 #import "ProjectGlobals.h"
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 
 static SESessionManager *sharedHTTPClient = nil;
 
-//static NSString *baseURLString = @"http://5.9.156.3/~gosti/api/";
-//static NSString *baseURLString = @"http://5.9.156.3/~karicom/app-new/index.php?r=api/";
-//static NSString *baseURLString = @"http://192.168.1.13/vdiabete/basic/web/index.php?r=api/"; //Kostya
-static NSString *baseURLString = @"http://192.168.1.105/vdiabete/basic/web/api/"; //Yura
+static NSString *baseURLString = @"http://api.openweathermap.org/"; //openweather
 
 @implementation SEProjectFacade
 
@@ -69,6 +69,21 @@ static NSString *baseURLString = @"http://192.168.1.105/vdiabete/basic/web/api/"
 }
 
 #pragma mark - Requests builder
+
++ (SENetworkOperation *)getWeatherByCity:(City *)city onSuccess:(void (^)(Weather *weather))success
+                                        onFailure:(void (^)(NSError *error, BOOL isCanceled))failure {
+    
+    SEGetWeatherRequest *request = [[SEGetWeatherRequest alloc] initWithCity:city];
+    
+    SENetworkOperation *operation = [[self HTTPClient] enqueueOperationWithNetworkRequest:request success:^(SENetworkOperation *operation) {
+        SEGetWeatherRequest *request = (SEGetWeatherRequest*)operation.networkRequest;
+        success(request.currentWeather);
+    } failure:^(NSError *error, BOOL isCanceled) {
+        ShowErrorAlert(error);
+        failure(error, isCanceled);
+    }];
+    return operation;
+}
 
 + (NSString*)deviceUDIDString {
     NSUUID *deviceUDID=  [[UIDevice currentDevice] identifierForVendor];

@@ -9,22 +9,23 @@
 #import "Weather.h"
 #import "City.h"
 #import "CustomImage.h"
-#import "Wind.h"
 
 
 @implementation Weather
 
+@dynamic groundLevel;
+@dynamic humidity;
+@dynamic pressure;
+@dynamic seaLevel;
+@dynamic sunrise;
+@dynamic sunset;
 @dynamic temperature;
 @dynamic temperatureMax;
 @dynamic temperatureMin;
-@dynamic pressure;
-@dynamic seaLevel;
-@dynamic groundLevel;
-@dynamic sunrise;
-@dynamic sunset;
-@dynamic humidity;
+@dynamic weatherDate;
+@dynamic windSpeed;
+@dynamic windDegree;
 @dynamic city;
-@dynamic wind;
 @dynamic icon;
 
 @end

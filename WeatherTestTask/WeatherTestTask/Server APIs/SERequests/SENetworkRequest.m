@@ -6,35 +6,6 @@
 //  Copyright (c) 2015 eugenity. All rights reserved.
 //
 
-/*
- All request have general structure:
- 
- {
- "route" : RouteName,
- "token" : Token (if have token) ,
- "params" : {
- "action" : ActionName -  ,
- "data" : {
- Parameters inside request.
- },
- }
- }
- 
- 
-General structure for response:
- 
-{
-    "data" : {
- 
-       token : @"qwqefwrgt35tytgefkvwrogkpo3b" (for example)
- 
-    }
- 
-    "message" : @"message string"
-    "status" : @"success" or @"failure"
-}
-*/
-
 #import "SENetworkRequest.h"
 #import "Constants.h"
 
@@ -135,6 +106,13 @@ static NSString *tokenKey   = @"token";
         
         if ([json isKindOfClass:[NSDictionary class]]) {
             
+            id statusCode;
+            if ([json[keyStatusCode] isKindOfClass:[NSNumber class]]) {
+                
+            } else if ([json[keyStatusCode] isKindOfClass:[NSString class]]) {
+                
+            }
+            
             if([json[keyStatusCode] isEqualToNumber:@200]) {
                 
                 @try {
@@ -177,13 +155,13 @@ static NSString *tokenKey   = @"token";
     //        if([self validateJsonErrorObject:responseObject withKey:@"general"]) {
     //            description = responseObject[@"meta"][@"description"][@"general"][0];
     //        }
-//    if (responseObject[keyRequestMessage] && [responseObject[keyRequestMessage] isKindOfClass:[NSString class]]) {
-//        description =responseObject[keyRequestMessage];
-//    }
+    if (responseObject[keyMessage] && [responseObject[keyMessage] isKindOfClass:[NSString class]]) {
+        description =responseObject[keyMessage];
+    }
     
-//    _error = [NSError errorWithDomain:keyRequestMessage
-//                                 code:code
-//                             userInfo:@{NSLocalizedDescriptionKey: description}];
+    _error = [NSError errorWithDomain:keyMessage
+                                 code:code
+                             userInfo:@{NSLocalizedDescriptionKey: description}];
     
 }
 

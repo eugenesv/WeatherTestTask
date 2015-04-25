@@ -21,5 +21,18 @@ extern NSString *const keyId;
 extern NSString *const keyName;
 
 extern NSString *const keyStatusCode;
+extern NSString *const keyMessage;
+
+extern NSString *const keyTemperature;
+extern NSString *const keyTemperatureMax;
+extern NSString *const keyTemperatureMin;
+extern NSString *const keySeaLevel;
+extern NSString *const keyGroundLevel;
+extern NSString *const keySunrise;
+extern NSString *const keySunset;
+extern NSString *const keyHumidity;
+extern NSString *const keySpeed;
+extern NSString *const keyDegree;
+extern NSString *const keyPressure;
 
 #endif

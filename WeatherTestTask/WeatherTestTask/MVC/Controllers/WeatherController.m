@@ -9,105 +9,102 @@
 #import "WeatherController.h"
 #import "CoreDataManager.h"
 
-#import "TemperatureCell.h"
-#import "WeatherCell.h"
 #import "Weather.h"
-#import "Wind.h"
+#import "City.h"
+#import "SEProjectFacade.h"
+#import "CoreDataStorage.h"
+#import "CustomImage.h"
+#import "YRActivityIndicator.h"
+#import "UIView+MakeFromXib.h"
+#import "MapViewController.h"
 
 @interface WeatherController ()
+
+@property (strong, nonatomic) Weather *currentWeather;
+
+@property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentTemperatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sunriseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sunsetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *humidityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *windLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pressureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maxTemperatureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *minTemperatureLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherIcon;
+
+@property (strong, nonatomic) YRActivityIndicator *activityIndicator;
 
 @end
 
 @implementation WeatherController
 
-@synthesize fetchedResultsController    = _fetchedResultsController;
-@synthesize managedObjectContext        = _managedObjectContext;
-
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-#pragma mark - Accessors
-
-- (NSManagedObjectContext*) managedObjectContext {
-    
-    if (!_managedObjectContext) {
-        _managedObjectContext = [[CoreDataManager sharedManager] managedObjectContext];
-    }
-    return _managedObjectContext;
+    [self getWeather];
+    self.activityIndicator = [YRActivityIndicator makeFromXibWithFileOwner:nil];
+    [self.activityIndicator setCenter:self.view.center];
+    [self.view addSubview:self.activityIndicator];
+    [self.activityIndicator startAnimating];
 }
 
 #pragma mark - UITableViewDataSource methods
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - Actions
+
+- (void)getWeather {
     
-    UITableViewCell *cell;
+    __weak typeof(self)weakSelf = self;
     
-    if (indexPath.row == 0) {
-        static NSString *temperatureCellIdentifier = @"TemperatureCell";
-        cell = (TemperatureCell *)[tableView dequeueReusableCellWithIdentifier:temperatureCellIdentifier forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath];
-    } else if (indexPath.row == 1) {
-        static NSString *weatherCellIdentifier = @"WeatherCell";
-        cell = (WeatherCell *)[tableView dequeueReusableCellWithIdentifier:weatherCellIdentifier forIndexPath:indexPath];
-        [self configureCell:cell atIndexPath:indexPath];
+    self.currentWeather = [[CoreDataStorage sharedStorage] getWeatherByCity:self.choosenCity];
+    
+    NSDate *weatherDate = [NSDate dateWithTimeIntervalSince1970:[self.currentWeather.weatherDate integerValue]];
+    NSDate *expirationDate = [weatherDate dateByAddingTimeInterval:60*10];
+    
+    //if there is no current weather of if user tries to update weather before 10 minutes pass
+    if (!self.currentWeather || [expirationDate compare:[NSDate date]] == NSOrderedAscending) {
+        [self.activityIndicator startAnimating];
+        [SEProjectFacade getWeatherByCity:self.choosenCity onSuccess:^(Weather *weather) {
+            weakSelf.currentWeather = weather;
+            [weakSelf setWeatherInfo];
+            [weakSelf.activityIndicator stopAnimating];
+        } onFailure:^(NSError *error, BOOL isCanceled) {
+            [weakSelf.activityIndicator stopAnimating];
+        }];
+    } else {
+        [self setWeatherInfo];
     }
-    return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Weather *weather = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    City *city = weather.city;
-
-    if ([cell isKindOfClass:[TemperatureCell class]]) {
-        
-    } else if ([cell isKindOfClass:[WeatherCell class]]) {
-        
-    }
+- (void)setWeatherInfo {
+    self.maxTemperatureLabel.text = [NSString stringWithFormat:@"%@", self.currentWeather.temperatureMax];
+    self.minTemperatureLabel.text = [NSString stringWithFormat:@"%@", self.currentWeather.temperatureMin];
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm"];
+    NSDate *sunriseDate = [NSDate dateWithTimeIntervalSince1970:[self.currentWeather.sunrise integerValue]];
+    NSDate *sunsetDate = [NSDate dateWithTimeIntervalSince1970:[self.currentWeather.sunset integerValue]];
+    
+    self.sunriseLabel.text = [dateFormatter stringFromDate:sunriseDate];
+    self.sunsetLabel.text = [dateFormatter stringFromDate:sunsetDate];
+    [self.weatherIcon setImage:[UIImage imageWithData:self.currentWeather.icon.imageData]];
+    
+    self.humidityLabel.text = [NSString stringWithFormat:@"%@ percents", self.currentWeather.humidity];
+    self.windLabel.text = [NSString stringWithFormat:@"Speed %@, degree %@", self.currentWeather.windSpeed, self.currentWeather.windDegree];
+    self.pressureLabel.text = [NSString stringWithFormat:@"%@", self.currentWeather.pressure];
 }
 
-#pragma mark - Fetched results controller
+#pragma mark - Navigation
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"segueToMap"]) {
+        MapViewController *controller = (MapViewController *)segue.destinationViewController;
+        controller.choosenCity = self.choosenCity;
     }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"City" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    // Set the batch size to a suitable number.
-    //    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"cityName" ascending:YES];
-    
-    //    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor1];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-    
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _fetchedResultsController;
 }
 
 @end

@@ -14,9 +14,9 @@
 @interface City : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * cityId;
-@property (nonatomic, retain) NSString * cityName;
 @property (nonatomic, retain) NSDecimalNumber * cityLatitude;
 @property (nonatomic, retain) NSDecimalNumber * cityLongitude;
+@property (nonatomic, retain) NSString * cityName;
 @property (nonatomic, retain) NSString * countryName;
 @property (nonatomic, retain) Weather *weather;
 

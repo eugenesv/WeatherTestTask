@@ -8,10 +8,15 @@
 
 #import "CitiesListController.h"
 #import "CoreDataManager.h"
+#import "CoreDataStorage.h"
 #import "CityCell.h"
 #import "City.h"
+#import "SEProjectFacade.h"
+#import "WeatherController.h"
 
 @interface CitiesListController ()
+
+@property (strong, nonatomic) City *choosenCity;
 
 @end
 
@@ -24,7 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSArray *cities = self.fetchedResultsController.fetchedObjects;
+
+    if (!cities.count) {
+        [self createCitiesArray];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Accessors
@@ -49,6 +59,13 @@
 - (void)configureCell:(CityCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     City *city = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.cityNameLabel.text = city.cityName;
+}
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.choosenCity = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"segueToWeather" sender:self];
 }
 
 #pragma mark - Fetched results controller
@@ -89,6 +106,49 @@
     }
     
     return _fetchedResultsController;
+}
+
+#pragma mark - Actions
+
+- (void)createCitiesArray {
+    [[CoreDataStorage sharedStorage] addNewCityWithId:@(819827)
+                                          andWithName:@"Razvilka"
+                                          andLatitude:[NSDecimalNumber decimalNumberWithString:@"55.591667"]
+                                         andLongitude:[NSDecimalNumber decimalNumberWithString:@"37.740833"]
+                                       andCountryName:@"RU"];
+    
+    [[CoreDataStorage sharedStorage] addNewCityWithId:@(1271881)
+                                          andWithName:@"Firozpur Jhirka"
+                                          andLatitude:[NSDecimalNumber decimalNumberWithString:@"27.799999"]
+                                         andLongitude:[NSDecimalNumber decimalNumberWithString:@"76.949997"]
+                                       andCountryName:@"IN"];
+    
+    [[CoreDataStorage sharedStorage] addNewCityWithId:@(1283240)
+                                          andWithName:@"Kathmandu"
+                                          andLatitude:[NSDecimalNumber decimalNumberWithString:@"27.716667"]
+                                         andLongitude:[NSDecimalNumber decimalNumberWithString:@"85.316666"]
+                                       andCountryName:@"NP"];
+    
+    [[CoreDataStorage sharedStorage] addNewCityWithId:@(703448)
+                                          andWithName:@"Kiev"
+                                          andLatitude:[NSDecimalNumber decimalNumberWithString:@"50.433334"]
+                                         andLongitude:[NSDecimalNumber decimalNumberWithString:@"30.516666"]
+                                       andCountryName:@"UA"];
+    
+    [[CoreDataStorage sharedStorage] addNewCityWithId:@(529368)
+                                          andWithName:@"Marfino"
+                                          andLatitude:[NSDecimalNumber decimalNumberWithString:@"55.702778"]
+                                         andLongitude:[NSDecimalNumber decimalNumberWithString:@"37.382221"]
+                                       andCountryName:@"RU"];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"segueToWeather"]) {
+        WeatherController *controller = (WeatherController *)segue.destinationViewController;
+        controller.choosenCity = self.choosenCity;
+    }
 }
 
 @end

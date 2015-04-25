@@ -13,9 +13,9 @@
 @implementation City
 
 @dynamic cityId;
-@dynamic cityName;
 @dynamic cityLatitude;
 @dynamic cityLongitude;
+@dynamic cityName;
 @dynamic countryName;
 @dynamic weather;
 

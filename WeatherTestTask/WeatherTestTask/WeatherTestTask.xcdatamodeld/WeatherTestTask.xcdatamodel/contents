@@ -22,21 +22,15 @@
         <attribute name="temperature" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="temperatureMax" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="temperatureMin" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="weatherDate" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="windDegree" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="windSpeed" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="weather" inverseEntity="City" syncable="YES"/>
         <relationship name="icon" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CustomImage" inverseName="weather" inverseEntity="CustomImage" syncable="YES"/>
-        <relationship name="wind" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Wind" inverseName="weather" inverseEntity="Wind" syncable="YES"/>
-    </entity>
-    <entity name="Wind" representedClassName="Wind" syncable="YES">
-        <attribute name="degree" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="direction" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="speed" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="windDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="weather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather" inverseName="wind" inverseEntity="Weather" syncable="YES"/>
     </entity>
     <elements>
         <element name="City" positionX="9" positionY="-72" width="128" height="133"/>
-        <element name="Weather" positionX="-162" positionY="-72" width="128" height="223"/>
-        <element name="Wind" positionX="7" positionY="122" width="128" height="118"/>
         <element name="CustomImage" positionX="-315" positionY="-72" width="128" height="73"/>
+        <element name="Weather" positionX="-162" positionY="-72" width="128" height="253"/>
     </elements>
 </model>

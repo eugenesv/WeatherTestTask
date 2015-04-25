@@ -7,31 +7,29 @@
 //
 
 #import "MapViewController.h"
+#import <MapKit/MapKit.h>
+#import "City.h"
+#import "City+Annotation.h"
 
 @interface MapViewController ()
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
 @implementation MapViewController
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addAnnotation];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Actions
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)addAnnotation {
+    [self.mapView addAnnotation:self.choosenCity];
 }
-*/
 
 @end

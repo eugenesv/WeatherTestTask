@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class City;
+
 @interface MapViewController : UIViewController
+
+@property (strong, nonatomic) City *choosenCity;
 
 @end
