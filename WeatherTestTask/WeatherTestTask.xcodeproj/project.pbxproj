@@ -14,6 +14,7 @@
 		44574B841AEB7878002690F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44574B831AEB7878002690F5 /* Images.xcassets */; };
 		44574B871AEB7878002690F5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44574B851AEB7878002690F5 /* LaunchScreen.xib */; };
 		44574B931AEB7879002690F5 /* WeatherTestTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44574B921AEB7879002690F5 /* WeatherTestTaskTests.m */; };
+		5FDD0721ADAEC8EB846A0347 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF975B4166B3BE41C3F3A10B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		107780B7F624709EBFC944DD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		44574B731AEB7878002690F5 /* WeatherTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44574B771AEB7878002690F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44574B781AEB7878002690F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		44574B8C1AEB7879002690F5 /* WeatherTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44574B911AEB7879002690F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44574B921AEB7879002690F5 /* WeatherTestTaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTestTaskTests.m; sourceTree = "<group>"; };
+		BF42EA0558769DFB98C39947 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		CF975B4166B3BE41C3F3A10B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FDD0721ADAEC8EB846A0347 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B661E1EA16410EF0C512457 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF42EA0558769DFB98C39947 /* Pods.debug.xcconfig */,
+				107780B7F624709EBFC944DD /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2DBA9C793970F0BBE5753D57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF975B4166B3BE41C3F3A10B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		44574B6A1AEB7878002690F5 = {
 			isa = PBXGroup;
 			children = (
 				44574B751AEB7878002690F5 /* WeatherTestTask */,
 				44574B8F1AEB7879002690F5 /* WeatherTestTaskTests */,
 				44574B741AEB7878002690F5 /* Products */,
+				1B661E1EA16410EF0C512457 /* Pods */,
+				2DBA9C793970F0BBE5753D57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44574B961AEB7879002690F5 /* Build configuration list for PBXNativeTarget "WeatherTestTask" */;
 			buildPhases = (
+				7A38D4C0E494F7F2054146A3 /* Check Pods Manifest.lock */,
 				44574B6F1AEB7878002690F5 /* Sources */,
 				44574B701AEB7878002690F5 /* Frameworks */,
 				44574B711AEB7878002690F5 /* Resources */,
+				5594AEC7340C06C0947BD3A4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5594AEC7340C06C0947BD3A4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A38D4C0E494F7F2054146A3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44574B6F1AEB7878002690F5 /* Sources */ = {
@@ -341,6 +400,7 @@
 		};
 		44574B971AEB7879002690F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF42EA0558769DFB98C39947 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeatherTestTask/Info.plist;
@@ -352,6 +412,7 @@
 		};
 		44574B981AEB7879002690F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 107780B7F624709EBFC944DD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WeatherTestTask/Info.plist;
@@ -414,6 +475,7 @@
 				44574B981AEB7879002690F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44574B991AEB7879002690F5 /* Build configuration list for PBXNativeTarget "WeatherTestTaskTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +484,7 @@
 				44574B9B1AEB7879002690F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
