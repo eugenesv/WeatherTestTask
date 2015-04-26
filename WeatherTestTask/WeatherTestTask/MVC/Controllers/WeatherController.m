@@ -48,16 +48,17 @@ static NSUInteger const kTimeBeforeUpdate = 60*10;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self addActivityIndicator];
     [self getWeather];
+}
+
+#pragma mark - Actions
+
+- (void)addActivityIndicator {
     self.activityIndicator = [YRActivityIndicator makeFromXibWithFileOwner:nil];
     [self.activityIndicator setCenter:self.view.center];
     [self.view addSubview:self.activityIndicator];
-    [self.activityIndicator startAnimating];
 }
-
-#pragma mark - UITableViewDataSource methods
-
-#pragma mark - Actions
 
 - (void)getWeather {
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -33,7 +33,7 @@
                     <real key="value" value="1.3999999999999999"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="itemColor">
-                    <color key="value" red="0.29003193430000002" green="0.6375741332" blue="0.25963731750000002" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="value" red="0.15935958059210525" green="0.85097142269736847" blue="0.80692331414473684" alpha="1" colorSpace="deviceRGB"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="hidesWhenStopped" value="YES"/>
             </userDefinedRuntimeAttributes>
