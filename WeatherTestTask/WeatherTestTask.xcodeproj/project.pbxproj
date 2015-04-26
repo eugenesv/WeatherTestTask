@@ -42,10 +42,10 @@
 		44574C0E1AEBE2A7002690F5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44574C0D1AEBE2A7002690F5 /* MapKit.framework */; };
 		44574C111AEBE3A1002690F5 /* SEGetWeatherRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 44574C101AEBE3A1002690F5 /* SEGetWeatherRequest.m */; };
 		44574C151AEBE98C002690F5 /* Weather+UpdateWithServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 44574C141AEBE98C002690F5 /* Weather+UpdateWithServerResponse.m */; };
-		445FED5F1AEC237000C65036 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 445FED5E1AEC237000C65036 /* Weather.m */; };
-		445FED621AEC237100C65036 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 445FED611AEC237100C65036 /* City.m */; };
-		445FED651AEC237100C65036 /* CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 445FED641AEC237100C65036 /* CustomImage.m */; };
 		445FED681AEC2D2300C65036 /* City+Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 445FED671AEC2D2300C65036 /* City+Annotation.m */; };
+		4488865D1AECE9C600E799FE /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = 4488865C1AECE9C500E799FE /* Weather.m */; };
+		448886601AECE9C600E799FE /* CustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4488865F1AECE9C600E799FE /* CustomImage.m */; };
+		448886631AECE9C700E799FE /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 448886621AECE9C700E799FE /* City.m */; };
 		5FDD0721ADAEC8EB846A0347 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF975B4166B3BE41C3F3A10B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -122,14 +122,14 @@
 		44574C101AEBE3A1002690F5 /* SEGetWeatherRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEGetWeatherRequest.m; path = "Server APIs/SERequests/SEGetWeatherRequest.m"; sourceTree = "<group>"; };
 		44574C131AEBE98C002690F5 /* Weather+UpdateWithServerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Weather+UpdateWithServerResponse.h"; path = "CoreData/NSManagedObjectsCategories/Weather+UpdateWithServerResponse.h"; sourceTree = "<group>"; };
 		44574C141AEBE98C002690F5 /* Weather+UpdateWithServerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Weather+UpdateWithServerResponse.m"; path = "CoreData/NSManagedObjectsCategories/Weather+UpdateWithServerResponse.m"; sourceTree = "<group>"; };
-		445FED5D1AEC237000C65036 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weather.h; path = CoreData/NSManagedObjects/Weather.h; sourceTree = "<group>"; };
-		445FED5E1AEC237000C65036 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Weather.m; path = CoreData/NSManagedObjects/Weather.m; sourceTree = "<group>"; };
-		445FED601AEC237100C65036 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = CoreData/NSManagedObjects/City.h; sourceTree = "<group>"; };
-		445FED611AEC237100C65036 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = CoreData/NSManagedObjects/City.m; sourceTree = "<group>"; };
-		445FED631AEC237100C65036 /* CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomImage.h; path = CoreData/NSManagedObjects/CustomImage.h; sourceTree = "<group>"; };
-		445FED641AEC237100C65036 /* CustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomImage.m; path = CoreData/NSManagedObjects/CustomImage.m; sourceTree = "<group>"; };
 		445FED661AEC2D2300C65036 /* City+Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "City+Annotation.h"; path = "CoreData/NSManagedObjectsCategories/City+Annotation.h"; sourceTree = "<group>"; };
 		445FED671AEC2D2300C65036 /* City+Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "City+Annotation.m"; path = "CoreData/NSManagedObjectsCategories/City+Annotation.m"; sourceTree = "<group>"; };
+		4488865B1AECE9C500E799FE /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weather.h; path = CoreData/NSManagedObjects/Weather.h; sourceTree = "<group>"; };
+		4488865C1AECE9C500E799FE /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Weather.m; path = CoreData/NSManagedObjects/Weather.m; sourceTree = "<group>"; };
+		4488865E1AECE9C600E799FE /* CustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomImage.h; path = CoreData/NSManagedObjects/CustomImage.h; sourceTree = "<group>"; };
+		4488865F1AECE9C600E799FE /* CustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomImage.m; path = CoreData/NSManagedObjects/CustomImage.m; sourceTree = "<group>"; };
+		448886611AECE9C700E799FE /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = CoreData/NSManagedObjects/City.h; sourceTree = "<group>"; };
+		448886621AECE9C700E799FE /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = CoreData/NSManagedObjects/City.m; sourceTree = "<group>"; };
 		BF42EA0558769DFB98C39947 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CF975B4166B3BE41C3F3A10B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -376,12 +376,12 @@
 		44574BD51AEB8EEA002690F5 /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				445FED631AEC237100C65036 /* CustomImage.h */,
-				445FED641AEC237100C65036 /* CustomImage.m */,
-				445FED601AEC237100C65036 /* City.h */,
-				445FED611AEC237100C65036 /* City.m */,
-				445FED5D1AEC237000C65036 /* Weather.h */,
-				445FED5E1AEC237000C65036 /* Weather.m */,
+				448886611AECE9C700E799FE /* City.h */,
+				448886621AECE9C700E799FE /* City.m */,
+				4488865E1AECE9C600E799FE /* CustomImage.h */,
+				4488865F1AECE9C600E799FE /* CustomImage.m */,
+				4488865B1AECE9C500E799FE /* Weather.h */,
+				4488865C1AECE9C500E799FE /* Weather.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -554,20 +554,20 @@
 				44574BE71AEB926A002690F5 /* WeatherController.m in Sources */,
 				44574BB51AEB824A002690F5 /* SEProjectFacade.m in Sources */,
 				44574BE41AEB9248002690F5 /* CitiesListController.m in Sources */,
+				4488865D1AECE9C600E799FE /* Weather.m in Sources */,
 				44574BAD1AEB8239002690F5 /* ProjectGlobals.m in Sources */,
-				445FED621AEC237100C65036 /* City.m in Sources */,
 				44574BD21AEB856B002690F5 /* NSString+ContainsString.m in Sources */,
 				44574BD41AEB856B002690F5 /* UIView+Shaking.m in Sources */,
-				445FED651AEC237100C65036 /* CustomImage.m in Sources */,
+				448886601AECE9C600E799FE /* CustomImage.m in Sources */,
 				44574C111AEBE3A1002690F5 /* SEGetWeatherRequest.m in Sources */,
 				44574BEA1AEB9282002690F5 /* MapViewController.m in Sources */,
 				44574B7C1AEB7878002690F5 /* AppDelegate.m in Sources */,
 				44574BD91AEB8F09002690F5 /* WeatherTestTask.xcdatamodeld in Sources */,
 				44574BD31AEB856B002690F5 /* UIView+MakeFromXib.m in Sources */,
-				445FED5F1AEC237000C65036 /* Weather.m in Sources */,
 				445FED681AEC2D2300C65036 /* City+Annotation.m in Sources */,
 				44574BC71AEB827D002690F5 /* CoreDataStorage.m in Sources */,
 				44574BB61AEB824A002690F5 /* SESessionManager.m in Sources */,
+				448886631AECE9C700E799FE /* City.m in Sources */,
 				44574BC61AEB827D002690F5 /* CoreDataManager.m in Sources */,
 				44574BBC1AEB8260002690F5 /* CoreDataController.m in Sources */,
 				44574B791AEB7878002690F5 /* main.m in Sources */,

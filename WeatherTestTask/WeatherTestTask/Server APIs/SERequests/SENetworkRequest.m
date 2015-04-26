@@ -113,7 +113,7 @@ static NSString *tokenKey   = @"token";
                 
             }
             
-            if([json[keyStatusCode] isEqualToNumber:@200]) {
+            if(([json[keyStatusCode] isKindOfClass:[NSNumber class]] && [json[keyStatusCode] isEqualToNumber:@200]) || ([json[keyStatusCode] isKindOfClass:[NSString class]] && [json[keyStatusCode] isEqualToString:@"200"])) {
                 
                 @try {
                     NSError* error = nil;

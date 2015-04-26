@@ -2,7 +2,7 @@
 //  Weather.h
 //  WeatherTestTask
 //
-//  Created by Eugene Sokolenko on 25.04.15.
+//  Created by Eugene Sokolenko on 26.04.15.
 //  Copyright (c) 2015 Eugene Sokolenko. All rights reserved.
 //
 
@@ -23,8 +23,9 @@
 @property (nonatomic, retain) NSDecimalNumber * temperatureMax;
 @property (nonatomic, retain) NSDecimalNumber * temperatureMin;
 @property (nonatomic, retain) NSNumber * weatherDate;
-@property (nonatomic, retain) NSDecimalNumber * windSpeed;
 @property (nonatomic, retain) NSDecimalNumber * windDegree;
+@property (nonatomic, retain) NSDecimalNumber * windSpeed;
+@property (nonatomic, retain) NSString * weatherDescription;
 @property (nonatomic, retain) City *city;
 @property (nonatomic, retain) CustomImage *icon;
 

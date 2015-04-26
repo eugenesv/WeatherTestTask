@@ -9,6 +9,7 @@
 #import "SEGetWeatherRequest.h"
 #import "City.h"
 #import "CoreDataStorage.h"
+#import "CoreDataManager.h"
 #import "Weather.h"
 #import "Weather+UpdateWithServerResponse.h"
 
@@ -36,6 +37,8 @@ static NSString *imageAction = @"http://api.openweathermap.org/img/w/";
     return self;
 }
 
+#pragma mark - Actions
+
 - (BOOL)parseJSONDataSucessfully:(id)responseObject error:(NSError* __autoreleasing  *)error {
     
     [self fillWindAndWeatherFromResponseObject:responseObject];
@@ -44,7 +47,6 @@ static NSString *imageAction = @"http://api.openweathermap.org/img/w/";
 }
 
 - (NSString*)theRequestAction {
-    
     return [NSString stringWithFormat:@"%@?id=%@",requestAction, self.currentCity.cityId];
 }
 
@@ -73,7 +75,13 @@ static NSString *imageAction = @"http://api.openweathermap.org/img/w/";
     }];
     
     //create and update current weather
+    
+    if (self.currentCity.weather) {
+        [[CoreDataManager sharedManager] deleteManagedObject:self.currentCity.weather];
+    }
+    
     self.currentWeather = [[CoreDataStorage sharedStorage] addNewWeatherForCity:self.currentCity];
+    
     [self.currentWeather updateWithServerResponse:responseWeatherDict];
     
     //get image data for weather icon

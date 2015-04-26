@@ -2,7 +2,7 @@
 //  Weather.m
 //  WeatherTestTask
 //
-//  Created by Eugene Sokolenko on 25.04.15.
+//  Created by Eugene Sokolenko on 26.04.15.
 //  Copyright (c) 2015 Eugene Sokolenko. All rights reserved.
 //
 
@@ -23,8 +23,9 @@
 @dynamic temperatureMax;
 @dynamic temperatureMin;
 @dynamic weatherDate;
-@dynamic windSpeed;
 @dynamic windDegree;
+@dynamic windSpeed;
+@dynamic weatherDescription;
 @dynamic city;
 @dynamic icon;
 

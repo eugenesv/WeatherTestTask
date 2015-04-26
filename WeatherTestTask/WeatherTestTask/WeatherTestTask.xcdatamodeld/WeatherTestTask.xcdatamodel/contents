@@ -23,6 +23,7 @@
         <attribute name="temperatureMax" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="temperatureMin" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="weatherDate" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="weatherDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="windDegree" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="windSpeed" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="weather" inverseEntity="City" syncable="YES"/>
@@ -31,6 +32,6 @@
     <elements>
         <element name="City" positionX="9" positionY="-72" width="128" height="133"/>
         <element name="CustomImage" positionX="-315" positionY="-72" width="128" height="73"/>
-        <element name="Weather" positionX="-162" positionY="-72" width="128" height="253"/>
+        <element name="Weather" positionX="-162" positionY="-72" width="128" height="268"/>
     </elements>
 </model>

@@ -27,27 +27,8 @@
                                 forWeather:(Weather *)weather;
 
 //MARK: Weather
-- (Weather *)addNewWeatherWithTemperature:(NSDecimalNumber *)temperature
-                        andMinTemperature:(NSDecimalNumber *)minTemperature
-                        andMaxTemperature:(NSDecimalNumber *)maxTemperature
-                           andGroundLevel:(NSDecimalNumber *)groundLevel
-                              andSeaLevel:(NSDecimalNumber *)seaLevel
-                              andPressure:(NSDecimalNumber *)pressure
-                              andHumidity:(NSNumber *)humidity
-                           andSunriseTime:(NSNumber *)sunrise
-                            andSunsetTime:(NSNumber *)sunset
-                                  andDate:(NSNumber *)date
-                                  forCity:(City *)city;
-
 - (Weather *)getWeatherByCity:(City *)city;
 - (Weather *)addNewWeatherForCity:(City *)city;
-
-//MARK: Wind
-- (Wind *)addNewWindWithSpeed:(NSDecimalNumber *)speed
-                    andDegree:(NSDecimalNumber *)degree
-                 andDirection:(NSString *)direction
-                    toWeather:(Weather *)weather;
-
-- (Wind *)addNewWindForWeather:(Weather *)weather;
+- (NSArray *)allWeathers;
 
 @end

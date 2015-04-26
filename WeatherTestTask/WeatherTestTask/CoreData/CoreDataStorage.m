@@ -83,6 +83,7 @@
 }
 
 #pragma mark CustomImage
+
 - (CustomImage *)addNewCustomImageWithData:(NSData *)imageData
                                 forWeather:(Weather *)weather {
     CustomImage *customImage = (CustomImage *)[self.coreDataManager addNewManagedObjectForName:@"CustomImage"];
@@ -93,32 +94,6 @@
 }
 
 #pragma mark - Weather
-- (Weather *)addNewWeatherWithTemperature:(NSDecimalNumber *)temperature
-                        andMinTemperature:(NSDecimalNumber *)minTemperature
-                        andMaxTemperature:(NSDecimalNumber *)maxTemperature
-                           andGroundLevel:(NSDecimalNumber *)groundLevel
-                              andSeaLevel:(NSDecimalNumber *)seaLevel
-                              andPressure:(NSDecimalNumber *)pressure
-                              andHumidity:(NSNumber *)humidity
-                           andSunriseTime:(NSNumber *)sunrise
-                            andSunsetTime:(NSNumber *)sunset
-                                  andDate:(NSNumber *)date
-                                  forCity:(City *)city {
-    Weather *weather = (Weather *)[self.coreDataManager addNewManagedObjectForName:@"Weather"];
-    weather.temperature = temperature;
-    weather.temperatureMin = minTemperature;
-    weather.temperatureMax = maxTemperature;
-    weather.groundLevel = groundLevel;
-    weather.seaLevel = seaLevel;
-    weather.pressure = pressure;
-    weather.humidity = humidity;
-    weather.sunrise = sunrise;
-    weather.sunset = sunset;
-    weather.weatherDate = date;
-    city.weather = weather;
-    [self.coreDataManager saveContext];
-    return weather;
-}
 
 - (Weather *)addNewWeatherForCity:(City *)city {
     Weather *weather = (Weather *)[self.coreDataManager addNewManagedObjectForName:@"Weather"];
@@ -134,6 +109,11 @@
         return weathers[0];
     }
     return nil;
+}
+
+- (NSArray *)allWeathers {
+    NSArray *weathers = [self.coreDataManager getEntities:@"Weather"];
+    return weathers;
 }
 
 @end
